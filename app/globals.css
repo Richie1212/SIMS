@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-page-bg: #f9fafb;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-subtle: #374151;
+  --color-text-faint: #9ca3af;
+
+  --color-brand: #3b82f6;
+  --color-brand-light: #60a5fa;
+  --color-brand-lighter: #93c5fd;
+  --color-brand-lightest: #bfdbfe;
+  --color-brand-faint: #dbeafe;
+  --color-brand-tint: #eff6ff;
+
+  --color-success: #10b981;
+  --color-success-tint: #ecfdf5;
+  --color-success-badge-bg: #d1fae5;
+  --color-success-badge-text: #065f46;
+
+  --color-danger: #ef4444;
+  --color-danger-tint: #fef2f2;
+  --color-danger-badge-bg: #fee2e2;
+  --color-danger-badge-text: #991b1b;
+
+  --color-warning: #f59e0b;
+  --color-warning-tint: #fffbeb;
+  --color-warning-badge-bg: #fef3c7;
+  --color-warning-badge-text: #92400e;
+
+  --color-neutral-tint: #f3f4f6;
+
+  --font-brand: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-page-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-brand);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
