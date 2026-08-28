@@ -7,7 +7,7 @@ const SHADES = ["var(--color-brand)", "var(--color-brand-light)", "var(--color-b
 
 export default function CategoryBarChart({ data }: { data: CategoryBar[] }) {
   return (
-    <div className="flex-1 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_4px_6px_rgba(0,0,0,0.03)]">
+    <div className="flex-1 rounded-xl border border-(--color-border) bg-(--color-surface) p-3.5 ">
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-base font-semibold text-(--color-text-primary)">Inventory by Category</h2>
         <span className="rounded-md bg-(--color-brand-tint) px-2 py-1 text-xs font-medium text-(--color-brand)">Top 5</span>

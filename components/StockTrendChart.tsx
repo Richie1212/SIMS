@@ -5,7 +5,7 @@ import { TrendPoint } from "@/lib/types";
 
 export default function StockTrendChart({ data }: { data: TrendPoint[] }) {
   return (
-    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_4px_6px_rgba(0,0,0,0.03)]">
+    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-3.5 ">
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-base font-semibold text-(--color-text-primary)">Stock Trends</h2>
         <span className="rounded-md bg-(--color-success-tint) px-2 py-1 text-xs font-medium text-(--color-success)">+8.4%</span>

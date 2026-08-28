@@ -68,7 +68,7 @@ export default function ProductsTable({ products }: { products: Product[] }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <div className="flex flex-1 items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+        <div className="flex flex-1 items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-2.5">
           <Search size={18} className="shrink-0 text-(--color-text-faint)" />
           <input
             value={search}
@@ -99,9 +99,9 @@ export default function ProductsTable({ products }: { products: Product[] }) {
         </select>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+      <div className="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-surface) shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-left">
+          <table className="w-full min-w-180 text-left">
             <thead>
               <tr className="border-b border-(--color-border)">
                 {COLUMNS.map(({ key, label }) => (

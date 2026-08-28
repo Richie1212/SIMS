@@ -1,35 +1,48 @@
+"use client";
+
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import AppShell from "@/components/AppShell";
 import ProductsTable from "@/components/ProductsTable";
-import { products } from "@/lib/inventory-data";
+import Modal from "@/components/Modal";
+import AddProductForm from "@/components/AddProductForm";
+import { products as initialProducts } from "@/lib/inventory-data";
+import { Product } from "@/lib/inventory-types";
 
 export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function handleSave(product: Product) {
+    setProducts((prev) => [product, ...prev]);
+    setModalOpen(false);
+  }
+
   return (
     <AppShell>
-      <div className="mx-auto w-full max-w-5xl px-6 py-8 flex flex-col gap-6">
-        
-        {/* Flat Minimal Header Section */}
-        <header className="flex items-center justify-between border-b border-(--color-border) pb-4">
-          <div className="space-y-1">
-            <h1 className="text-xl font-medium tracking-tight text-(--color-text-primary)">
-              Inventory <span className="text-(--color-text-muted)">/ Products</span>
-            </h1>
-            <p className="text-xs text-(--color-text-muted)">Manage and track all your products.</p>
-          </div>
-
-          {/* Low-profile Keyboard-style Button */}
-          <button className="flex items-center gap-1.5 rounded-md border border-(--color-border) bg-(--color-surface-raised) px-3 py-1.5 text-xs font-medium text-(--color-text-primary) shadow-sm hover:bg-(--color-surface-elevated) active:scale-[0.98] transition-all">
-            <Plus size={14} />
-            Add product
-          </button>
-        </header>
-
-        {/* Content Area */}
-        <div className="w-full">
-          <ProductsTable products={products} />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-xl font-bold sm:text-2xl">
+            <span className="text-(--color-text-primary)">Inventory/</span>
+            <span className="text-(--color-text-muted)"> Products</span>
+          </h1>
+          <p className="text-sm text-(--color-text-muted)">Manage and track all your products.</p>
         </div>
 
+        <button
+          onClick={() => setModalOpen(true)}
+          className="flex items-center justify-center gap-2 rounded-2xl bg-(--color-brand) px-4 py-2.5 text-sm font-bold text-white shadow-[0_4px_6px_rgba(59,130,246,0.25)] transition hover:opacity-90"
+        >
+          <Plus size={18} />
+          Add product
+        </button>
       </div>
+
+      <ProductsTable products={products} />
+
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        <AddProductForm onSave={handleSave} onCancel={() => setModalOpen(false)} />
+      </Modal>
     </AppShell>
   );
 }

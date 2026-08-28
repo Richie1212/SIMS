@@ -23,17 +23,17 @@ export default function KPICard({ kpi }: { kpi: KPI }) {
   const TrendIcon = trend.icon;
 
   return (
-    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_4px_6px_rgba(0,0,0,0.03)]">
+    <div className="flex flex-1 flex-col gap-2 rounded-lg border border-(--color-border) bg-(--color-surface) p-3.5">
       <div className="flex items-center justify-between">
-        <p className="text-sm font-medium text-(--color-text-muted)">{kpi.label}</p>
-        <div className={`flex h-8 w-8 items-center justify-center rounded-full ${tone.bg}`}>
-          <Icon size={16} className={tone.icon} />
+        <p className="text-[13px] font-medium text-(--color-text-muted)">{kpi.label}</p>
+        <div className={`flex h-7 w-7 items-center justify-center rounded-md ${tone.bg}`}>
+          <Icon size={14} className={tone.icon} />
         </div>
       </div>
-      <p className="text-2xl font-bold text-(--color-text-primary)">{kpi.value}</p>
+      <p className="text-[22px] font-semibold text-(--color-text-primary)">{kpi.value}</p>
       <div className="flex items-center gap-1">
-        <TrendIcon size={14} className={trend.color} />
-        <span className={`text-xs font-medium ${trend.color}`}>{kpi.trend}</span>
+        <TrendIcon size={12} className={trend.color} />
+        <span className={`text-xs ${trend.color}`}>{kpi.trend}</span>
       </div>
     </div>
   );

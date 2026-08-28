@@ -1,47 +1,49 @@
 @import "tailwindcss";
 
+
 @theme inline {
-  --color-page-bg: #f9fafb;
+  --color-page-bg: #fbfbfa;
   --color-surface: #ffffff;
-  --color-border: #e5e7eb;
+  --color-surface-muted: #f7f7f5;
+  --color-sidebar-bg: #fafaf9;
+  --color-border: #ebebe9;
+  --color-border-strong: #e0e0dd;
 
-  --color-text-primary: #111827;
-  --color-text-secondary: #4b5563;
-  --color-text-muted: #6b7280;
-  --color-text-subtle: #374151;
-  --color-text-faint: #9ca3af;
+  --color-text-primary: #1a1a19;
+  --color-text-secondary: #5f5e5b;
+  --color-text-muted: #8a8987;
+  --color-text-faint: #b4b3b0;
 
-  --color-brand: #3b82f6;
-  --color-brand-light: #60a5fa;
-  --color-brand-lighter: #93c5fd;
-  --color-brand-lightest: #bfdbfe;
-  --color-brand-faint: #dbeafe;
-  --color-brand-tint: #eff6ff;
+  --color-brand: #5b5bd6;
+  --color-brand-light: #7c7ce0;
+  --color-brand-tint: #f0f0fb;
+  --color-brand-border: #d8d8f3;
 
-  --color-success: #10b981;
+  --color-success: #1a8654;
   --color-success-tint: #ecfdf5;
-  --color-success-badge-bg: #d1fae5;
-  --color-success-badge-text: #065f46;
+  --color-success-badge-bg: #dcfce7;
+  --color-success-badge-text: #166534;
 
-  --color-danger: #ef4444;
+  --color-danger: #dc3d43;
   --color-danger-tint: #fef2f2;
   --color-danger-badge-bg: #fee2e2;
   --color-danger-badge-text: #991b1b;
 
-  --color-warning: #f59e0b;
+  --color-warning: #b5750a;
   --color-warning-tint: #fffbeb;
   --color-warning-badge-bg: #fef3c7;
   --color-warning-badge-text: #92400e;
 
-  --color-neutral-tint: #f3f4f6;
+  --color-neutral-tint: #f2f2f0;
 
-  --font-brand: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-brand: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--color-page-bg);
   color: var(--color-text-primary);
   font-family: var(--font-brand);
+  font-size: 14px;
 }
 
 :focus-visible {
@@ -56,4 +58,42 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-page-bg: #191918;
+  --color-surface: #1f1f1e;
+  --color-surface-muted: #232322;
+  --color-sidebar-bg: #1c1c1b;
+  --color-border: #2e2e2c;
+  --color-border-strong: #3a3a37;
+
+  --color-text-primary: #eeeeec;
+  --color-text-secondary: #a3a29e;
+  --color-text-muted: #7c7b77;
+  --color-text-faint: #56554f;
+
+  --color-brand: #8080f0;
+  --color-brand-light: #9a9af5;
+  --color-brand-tint: #232242;
+  --color-brand-border: #363468;
+
+  --color-success: #3ecf8e;
+  --color-success-tint: #10281c;
+  --color-success-badge-bg: #16342a;
+  --color-success-badge-text: #6ee7ac;
+
+  --color-danger: #f2555c;
+  --color-danger-tint: #2e1517;
+  --color-danger-badge-bg: #3a181a;
+  --color-danger-badge-text: #fca5a9;
+
+  --color-warning: #e0a835;
+  --color-warning-tint: #2c2210;
+  --color-warning-badge-bg: #3a2c11;
+  --color-warning-badge-text: #f4c860;
+
+  --color-neutral-tint: #26262490;
 }

@@ -12,3 +12,5 @@ export const products: Product[] = [
 ];
 
 export const categories = ["All", "Tablets", "Capsules", "Syrups", "Injections"];
+export const suppliers = ["MedSupply Ghana", "PharmaCorp Ltd.", "Accra Wholesale Meds"];
+export const warehouses = ["Accra", "Kumasi", "Tamale", "Takoradi"];

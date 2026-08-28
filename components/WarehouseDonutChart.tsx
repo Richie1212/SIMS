@@ -5,7 +5,7 @@ import { WarehouseSlice } from "@/lib/types";
 
 export default function WarehouseDonutChart({ data }: { data: WarehouseSlice[] }) {
   return (
-    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_4px_6px_rgba(0,0,0,0.03)]">
+    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-3.5">
       <h2 className="mb-5 text-base font-semibold text-(--color-text-primary)">Warehouse Distribution</h2>
       <div className="flex h-48 items-center justify-center gap-6">
         <div className="relative h-40 w-40 shrink-0">

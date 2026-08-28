@@ -5,7 +5,7 @@ const ICONS = { plus: Plus, minus: Minus, "refresh-cw": RefreshCw };
 
 export default function ActivityFeed({ items }: { items: ActivityItem[] }) {
   return (
-    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_4px_6px_rgba(0,0,0,0.03)]">
+    <div className="flex flex-1 flex-col gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) p-3.5">
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-base font-semibold text-(--color-text-primary)">Recent Activity</h2>
         <button className="text-sm font-medium text-(--color-brand) hover:underline">View All</button>
