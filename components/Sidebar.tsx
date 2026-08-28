@@ -154,7 +154,7 @@ function SidebarLink({
       href={href}
       title={collapsed ? label : undefined}
       className={`flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition ${
-        active ? "bg-(--color-brand-tint) text-(--color-brand)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+        active ? "bg-(--color-neutral-tint) font-medium text-(--color-brand)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
       }`}
     >
       <Icon size={16} className="shrink-0" />
