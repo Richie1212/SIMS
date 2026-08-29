@@ -1,12 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
+import { isSignedIn } from "@/lib/auth";
 import { getStoredPreference, applyResolvedTheme } from "@/lib/themes";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (!isSignedIn()) {
+      router.replace("/login");
+      return;
+    }
+    setReady(true);
+  }, [router]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -16,6 +28,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  if (!ready) return null;
 
   return (
     <div className="flex min-h-screen">
