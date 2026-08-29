@@ -21,8 +21,12 @@ const INVENTORY_CHILDREN = [
   { label: "Expiry tracker", href: "/inventory/expiry" },
 ];
 
+const SALES_CHILDREN = [
+  { label: "Point of Sale", href: "/sales/pos" },
+  { label: "Sales Quotes", href: "/sales/quotes" },
+];
+
 const NAV = [
-  { label: "Sales", href: "/sales", icon: Receipt },
   { label: "Purchases", href: "/purchases", icon: ShoppingCart },
   { label: "Analytics and Reports", href: "/reports", icon: BarChart2 },
 ];
@@ -35,6 +39,7 @@ interface SidebarProps {
 export default function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
   const pathname = usePathname();
   const [inventoryOpen, setInventoryOpen] = useState(pathname.startsWith("/inventory"));
+  const [salesOpen, setSalesOpen] = useState(pathname.startsWith("/sales"));
   const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
@@ -92,7 +97,7 @@ export default function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
             onClick={() => (collapsed ? undefined : setInventoryOpen((v) => !v))}
             title={collapsed ? "Inventory" : undefined}
             className={`group flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition ${
-              pathname.startsWith("/inventory") ? "text-(--color-brand)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+              pathname.startsWith("/inventory") ? "bg-(--color-neutral-tint) font-medium text-(--color-text-primary)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
             }`}
           >
             <Package size={16} className="shrink-0" />
@@ -111,7 +116,39 @@ export default function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps) {
                   key={child.href}
                   href={child.href}
                   className={`rounded-md px-2 py-1.5 text-sm transition ${
-                    pathname === child.href ? "font-medium text-(--color-brand)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+                    pathname === child.href ? "bg-(--color-neutral-tint) font-medium text-(--color-text-primary)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+                  }`}
+                >
+                  {child.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          <button
+            onClick={() => (collapsed ? undefined : setSalesOpen((v) => !v))}
+            title={collapsed ? "Sales" : undefined}
+            className={`group flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition ${
+              pathname.startsWith("/sales") ? "bg-(--color-neutral-tint) font-medium text-(--color-text-primary)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+            }`}
+          >
+            <Receipt size={16} className="shrink-0" />
+            {!collapsed && (
+              <>
+                <span className="flex-1 text-left">Sales</span>
+                <ChevronDown size={14} className={`transition-transform ${salesOpen ? "rotate-180" : ""}`} />
+              </>
+            )}
+          </button>
+
+          {!collapsed && salesOpen && (
+            <div className="ml-6 flex flex-col gap-0.5 border-l border-(--color-border) pl-3">
+              {SALES_CHILDREN.map((child) => (
+                <Link
+                  key={child.href}
+                  href={child.href}
+                  className={`rounded-md px-2 py-1.5 text-sm transition ${
+                    pathname === child.href ? "bg-(--color-neutral-tint) font-medium text-(--color-text-primary)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
                   }`}
                 >
                   {child.label}
@@ -154,7 +191,7 @@ function SidebarLink({
       href={href}
       title={collapsed ? label : undefined}
       className={`flex items-center gap-2.5 rounded-md px-2 py-1.5 text-sm transition ${
-        active ? "bg-(--color-neutral-tint) font-medium text-(--color-brand)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
+        active ? "bg-(--color-neutral-tint) font-medium text-(--color-text-primary)" : "text-(--color-text-secondary) hover:bg-(--color-neutral-tint)"
       }`}
     >
       <Icon size={16} className="shrink-0" />
