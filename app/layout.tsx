@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "SIMS — Inventory Management",
   description: "Monitor your stock levels and warehouse performance.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 const themeInitScript = `
