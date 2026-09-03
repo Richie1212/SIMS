@@ -1,5 +1,6 @@
 import { db } from "./dexie";
 import { seedProducts } from "@/features/inventory/data";
+import { expiryItems } from "@/features/inventory/expiry/expiry-data";
 
 let seeded = false;
 
@@ -11,6 +12,9 @@ export async function ensureSeeded() {
   if (productCount === 0) {
     await db.products.bulkAdd(seedProducts);
   }
-  // Expiry items, quotes, and purchase orders get the same treatment
-  // in the next pass, once this pattern is confirmed on Products.
+
+  const expiryCount = await db.expiryItems.count();
+  if (expiryCount === 0) {
+    await db.expiryItems.bulkAdd(expiryItems);
+  }
 }

@@ -1,4 +1,4 @@
-import { ExpiryStatus } from "@/lib/expiry-types";
+import { ExpiryStatus } from "../expiry-types";
 
 const STYLES: Record<ExpiryStatus, string> = {
   Valid: "bg-(--color-success-badge-bg) text-(--color-success-badge-text)",

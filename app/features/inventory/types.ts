@@ -1,31 +1,12 @@
-export interface KPI {
-  label: string;
-  value: string;
-  trend: string;
-  trendDirection: "up" | "down" | "neutral";
-  icon: "package" | "alert-triangle" | "dollar-sign" | "calendar";
-  tone: "brand" | "danger" | "success" | "warning";
-}
+export type StockStatus = "In Stock" | "Low Stock" | "Out of Stock";
 
-export interface CategoryBar {
-  label: string;
-  value: number; // 0–100, used to scale bar height
-}
-
-export interface TrendPoint {
-  month: string;
-  value: number;
-}
-
-export interface WarehouseSlice {
-  label: string;
-  value: number;
-  color: string;
-}
-
-export interface ActivityItem {
+export interface Product {
   id: string;
-  icon: "plus" | "minus" | "refresh-cw";
-  title: string;
-  timeAgo: string;
+  category: string;
+  name: string;
+  sku: string;
+  quantity: number;
+  status: StockStatus;
+  warehouse: string;
+  priceUSD: number;
 }

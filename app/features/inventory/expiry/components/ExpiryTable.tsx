@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { ExpiryItem, ExpiryStatus } from "@/lib/expiry-types";
+import { ExpiryItem, ExpiryStatus } from "../expiry-types";
 import ExpiryStatusBadge from "./ExpiryStatusBadge";
 
 const FILTERS: (ExpiryStatus | "All")[] = ["All", "Expiring Soon", "Expired", "Valid"];
@@ -32,7 +32,7 @@ export default function ExpiryTable({ items }: { items: ExpiryItem[] }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <div className="flex flex-1 items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-3.5 py-2.5 ">
+        <div className="flex flex-1 items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-2.5 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
           <Search size={18} className="shrink-0 text-(--color-text-faint)" />
           <input
             value={search}
@@ -58,7 +58,7 @@ export default function ExpiryTable({ items }: { items: ExpiryItem[] }) {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-surface) p-3.5">
+      <div className="overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) p-4 shadow-[0_8px_12px_rgba(0,0,0,0.05)]">
         <div className="overflow-x-auto">
           <table className="w-full min-w-180 text-left">
             <thead>

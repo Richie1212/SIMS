@@ -1,6 +1,19 @@
-import Dexie from "dexie";
+import Dexie, { type EntityTable } from "dexie";
+import { Product } from "@/features/inventory/types";
+import { ExpiryItem } from "@/features/inventory/expiry/expiry-types";
+
+export interface ActivityLogEntry {
+  id?: number;
+  type: string;
+  message: string;
+  timestamp: number;
+}
 
 class SimsDB extends Dexie {
+  products!: EntityTable<Product, "id">;
+  expiryItems!: EntityTable<ExpiryItem, "id">;
+  activityLog!: EntityTable<ActivityLogEntry, "id">;
+
   constructor() {
     super("sims-db");
 
@@ -11,10 +24,6 @@ class SimsDB extends Dexie {
       purchaseOrders: "id, status, supplier",
     });
 
-    // Every meaningful write anywhere in the app appends here. This is
-    // what makes "Recent Activity" and any real trend-over-time possible —
-    // without it, the dashboard has no way to know WHEN something happened,
-    // only its current state.
     this.version(2).stores({
       activityLog: "++id, timestamp, type",
     });
@@ -23,6 +32,6 @@ class SimsDB extends Dexie {
 
 export const db = new SimsDB();
 
-export async function logActivity(type, message) {
+export async function logActivity(type: string, message: string) {
   await db.activityLog.add({ type, message, timestamp: Date.now() });
 }
