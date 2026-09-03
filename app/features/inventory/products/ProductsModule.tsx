@@ -2,24 +2,23 @@
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import AppShell from "@/components/AppShell";
-import ProductsTable from "@/components/ProductsTable";
-import Modal from "@/app/features/products/components/Modal";
-import AddProductForm from "@/components/AddProductForm";
-import { products as initialProducts } from "@/lib/inventory-data";
-import { Product } from "@/lib/inventory-types";
+import ProductsTable from "./components/ProductsTable";
+import Modal from "@/components/Modal";
+import AddProductForm from "./components/AddProductForm";
+import { useProducts } from "./hooks/useProducts";
+import { Product } from "../types";
 
-export default function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+export default function ProductModule() {
+  const { products, addProduct } = useProducts();
   const [modalOpen, setModalOpen] = useState(false);
 
-  function handleSave(product: Product) {
-    setProducts((prev) => [product, ...prev]);
+  async function handleSave(product: Product) {
+    await addProduct(product);
     setModalOpen(false);
   }
 
   return (
-    <AppShell>
+    <>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-xl font-bold sm:text-2xl">
@@ -43,6 +42,6 @@ export default function ProductsPage() {
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <AddProductForm onSave={handleSave} onCancel={() => setModalOpen(false)} />
       </Modal>
-    </AppShell>
+    </>
   );
 }

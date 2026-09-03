@@ -9,25 +9,23 @@ export interface KPI {
 
 export interface CategoryBar {
   label: string;
-  value: number; // real total quantity for that category
+  value: number; // 0–100, used to scale bar height
 }
 
-export interface StockActivityPoint {
-  label: string; // day/week/month label depending on range
-  added: number;
+export interface TrendPoint {
+  month: string;
+  value: number;
 }
 
 export interface WarehouseSlice {
   label: string;
-  value: number; // real percentage of total stock
+  value: number;
   color: string;
 }
 
 export interface ActivityItem {
-  id: number;
+  id: string;
   icon: "plus" | "minus" | "refresh-cw";
   title: string;
   timeAgo: string;
 }
-
-export type DashboardRange = "Week" | "Month" | "Year";
